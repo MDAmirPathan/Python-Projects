@@ -1,9 +1,6 @@
 
-from re import search
-from typing import Counter
 import mysql.connector
 from mysql.connector import Error
-from numpy.lib.shape_base import column_stack
 import pandas as pd
 
 def create_server_connection(host_name,user_name,user_password):
@@ -73,8 +70,7 @@ def insert(connection):
     class_sec = input("Enter the Class & Sec:")
     father_name= input("Enter the Father name:")
     
-    #print(class_sec,type(class_sec))
-    #print(f"""{name}""")
+
     
     marks_term1 = []
     print("MARKS OF TERM I")
@@ -91,7 +87,6 @@ def insert(connection):
     marks_term2.append(int(input('Enter the marks English:')))
     marks_term2.append(int(input('Enter the marks Business:')))  
     marks_term2.append(int(input('Enter the marks IP:')))
-    #print(marks_term1)
     
     insert_values = f"""INSERT INTO student_info VALUES ({roll},
     "{name}",
@@ -128,8 +123,6 @@ def update_record(connection,df):
     class_sec = input("Enter the Class & Sec:")
     father_name= input("Enter the Father name:")
     
-    #print(class_sec,type(class_sec))
-    #print(f"""{name}""")
     
     marks_term1 = []
     print("MARKS OF TERM I")
@@ -166,11 +159,6 @@ def update_record(connection,df):
     
     execute_query(connection ,update_query)
 
-def generate_report_card(connection):
-    print("=-"*20)
-    roll_num = int(input("Enter the roll number:"))
-    print("=-"*20)
-    
     
 
     
@@ -182,7 +170,6 @@ if __name__ == "__main__":
 3.To delete a records
 4.To view all the records
 5.Update
-6. Generate the report
     """)
     connection = create_db_connection('localhost','root','nitinmadass','student_repo')
     #create_database_query = "CREATE DATABASE Student_Repo"
@@ -235,8 +222,6 @@ if __name__ == "__main__":
             df = convert_to_dataframe(results)
             
             update_record(connection,df)
-        elif choice == 6:
-            generate_report_card(connection)
         
         else:
             quit()
