@@ -11,8 +11,8 @@ password = "indiaisawe#24"
 port = 465
 server = "smtp.gmail.com"
 
-server = smtplib.SMTP_SSL(server,port)
-server.login(sender,password)
+#server = smtplib.SMTP_SSL(server,port)
+#server.login(sender,password)
 
 r = sr.Recognizer()
 
@@ -53,6 +53,8 @@ def microphone_input():
 		print(f"Error Occured {err}")
 	except sr.UnknownValueError as unerr:
 		print(f"Error Occured: {unerr}")
+	
+	return mic_input
 
 def message_input():
 	try:
